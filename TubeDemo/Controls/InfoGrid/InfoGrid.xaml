@@ -1,0 +1,267 @@
+﻿<UserControl x:Class="TubeDemo.Controls.InfoGrid.InfoGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TubeDemo.Controls.InfoGrid"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/TubeDemo;component/Assets/Generic.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="RefreshButtonIconStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Name="BackForButton">
+                                <Image Style="{StaticResource Icon_Refresh}" Stretch="Uniform"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style x:Key="DeleteButtonIconStyle" TargetType="Button">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Grid Name="BackForButton">
+                                <Image Style="{StaticResource Icon_Cross}" Stretch="Uniform"/>
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
+
+
+            <Button Grid.Row="0" Width="18"
+                    Height="18"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="5 5 10 5"
+                    AutomationProperties.AutomationId="UpdateCredsBtn"
+                    ToolTip="Delete selected"
+                    Cursor="Hand"
+
+                    Command="{Binding DeleteCommand}"    
+                    CommandParameter="{Binding SelectedItem}"  >
+                <Button.Style>
+                    <Style BasedOn="{StaticResource DeleteButtonIconStyle}" TargetType="{x:Type Button}">
+                        <Setter Property="IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}" Value="{x:Null}">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+
+            <Button Grid.Row="0" Width="20"
+                    Height="20"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Margin="5"
+                    AutomationProperties.AutomationId="UpdateCredsBtn"
+                    ToolTip="Update values"
+                    Cursor="Hand"
+                    
+                    Style="{StaticResource RefreshButtonIconStyle}"
+                    Command="{Binding RefreshCommand}" />
+        </StackPanel>
+
+
+
+
+        <Border BorderBrush="{DynamicResource Accent}" Grid.Row="1"     
+                  BorderThickness="0.5"  >
+            <DataGrid x:Name="DataGridItems"    
+                  ItemsSource="{Binding Items}"    
+                  SelectedItem="{Binding SelectedItem}"    
+                  AutoGenerateColumns="False"
+                    SelectionMode="Single"
+                    SelectionUnit="FullRow"
+                    CanUserAddRows="False"
+                    VirtualizingPanel.IsVirtualizing="True"
+                    AlternatingRowBackground="#FFF0F0F0" HorizontalGridLinesBrush="LightGray"
+                    VerticalGridLinesBrush="LightGray" GridLinesVisibility="All"   
+
+                  Margin="0"    
+                   >
+                <DataGrid.Resources>
+                    <Style TargetType="TextBox" x:Key="EditingElementStyleForCell">
+                        <Setter Property="ContextMenu"
+                                        Value="{DynamicResource StandardContextMenuForEditableControls}"/>
+                        <Setter Property="OverridesDefaultStyle" Value="true"/>
+                        <Setter Property="MinWidth" Value="0"/>
+                        <Setter Property="MinHeight" Value="0"/>
+                        <Setter Property="AcceptsReturn" Value="False"/>
+                        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                        <Setter Property="ScrollViewer.PanningMode" Value="VerticalFirst"/>
+                        <Setter Property="Stylus.IsFlicksEnabled" Value="False"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TextBox}">
+                                    <ScrollViewer x:Name="PART_ContentHost"
+                                                          Background="Transparent"
+                                                          Focusable="false"
+                                                          HorizontalScrollBarVisibility="Hidden"
+                                                          VerticalScrollBarVisibility="Hidden"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style TargetType="{x:Type DataGridCell}" x:Key="DataGridCellCommon">
+                        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+                        <Setter Property="VerticalAlignment" Value="Stretch"/>
+                        <Setter Property="IsSelected" Value="{Binding (local:InfoGridAttachedProperties.IsFocussed), Mode=OneWayToSource, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridRow}}}"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridCell}">
+                                    <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" >
+                                        <ContentPresenter VerticalAlignment="Center" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="White" />
+                                <Setter Property="Foreground" Value="Black" />
+                                <Setter Property="BorderBrush" Value="#FF2b559b" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <Style x:Key="ColumnHeaderGripperStyle" TargetType="{x:Type Thumb}">
+                        <Setter Property="Width" Value="8"/>
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Cursor" Value="SizeWE"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Thumb}">
+                                    <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="BorderBrush" Value="LightGray"/>
+                        <Setter Property="BorderThickness" Value="0,0,0,1"/>
+                        <Setter Property="FontSize" Value="12" />
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="Height" Value="30" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type DataGridColumnHeader}">
+                                    <Grid ContextMenuService.PlacementTarget="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type DataGridColumnHeader}}}" ContextMenuService.Placement="Bottom">
+                                        <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                    <ColumnDefinition Width="16"/>
+                                                    <ColumnDefinition Width="Auto"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Height="30" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="Stretch">
+                                                    <ContentPresenter Margin="5,0,5,0" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
+                                                </Grid>
+                                                <Image Tag="None"  HorizontalAlignment="Right" Margin="2,0,2,0"  Grid.Column="1"  x:Name="SortArrowMain" Visibility="Collapsed" VerticalAlignment="Center" Source="/TubeDemo;component/Assets/Icons/SortToggle_16.png" Cursor="Hand" DockPanel.Dock="Right" Width="12" Height="12" ></Image>
+                                                <Image Tag="Down"  HorizontalAlignment="Right" Margin="2,0,2,0"  Grid.Column="1" Visibility="Collapsed" x:Name="SortArrowUp" VerticalAlignment="Center" Source="/TubeDemo;component/Assets/Icons/SortUp_16.png" Cursor="Hand" DockPanel.Dock="Right" Width="12" Height="12" ></Image>
+                                                <Image Tag="Up"  HorizontalAlignment="Right" Margin="2,0,2,0"  Grid.Column="1" Visibility="Collapsed"  x:Name="SortArrowDown" VerticalAlignment="Center" Source="/TubeDemo;component/Assets/Icons/SortDown_16.png" Cursor="Hand" DockPanel.Dock="Right" Width="12" Height="12" ></Image>
+                                            </Grid>
+                                        </Border>
+                                        <Thumb x:Name="PART_LeftHeaderGripper" HorizontalAlignment="Left" Style="{StaticResource ColumnHeaderGripperStyle}"/>
+                                        <Thumb x:Name="PART_RightHeaderGripper" HorizontalAlignment="Right" Style="{StaticResource ColumnHeaderGripperStyle}"/>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="SortDirection" Value="Ascending">
+                                            <Setter TargetName="SortArrowUp" Property="Visibility" Value="Visible" />
+                                            <Setter TargetName="SortArrowMain" Property="Visibility" Value="Collapsed" />
+                                        </Trigger>
+                                        <Trigger Property="SortDirection" Value="Descending">
+                                            <Setter TargetName="SortArrowDown" Property="Visibility" Value="Visible" />
+                                            <Setter TargetName="SortArrowMain" Property="Visibility" Value="Collapsed" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <!-- <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter Property="Background" Value="#FFDDEEF7" />
+                                    </Trigger>
+                                    <Trigger Property="IsPressed" Value="true">
+                                        <Setter Property="Background" Value="#FFCEDBF2" />
+                                    </Trigger>
+                                </Style.Triggers> -->
+                    </Style>
+
+                </DataGrid.Resources>
+ 
+                <DataGrid.RowStyle>
+                    <Style TargetType="{x:Type DataGridRow}">
+                        <!--<Setter Property="Visibility" Value="{Binding RecordVisibility}" />-->
+                        <Setter Property="Height" Value="22" />
+                    </Style>
+                </DataGrid.RowStyle>
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name"    
+                                    Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Distance"    
+                                    Binding="{Binding Distance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Angle"    
+                                    Binding="{Binding Angle, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Width"     
+                                    Binding="{Binding Width, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTextColumn Header="Hegth"     
+                                    Binding="{Binding Hegth, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <DataGridTemplateColumn Header="Is Defect">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsDefect, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+       
+    </Grid>
+</UserControl>

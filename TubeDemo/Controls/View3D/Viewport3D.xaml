@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="TubeDemo.Controls.View3D.Viewport3D"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TubeDemo.Controls.View3D"
+             xmlns:ht="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf" 
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <local:TubeLengthConverter x:Key="TubeLengthConverter" />
+            <local:BrushToMaterialConverter x:Key="BrushToMaterialConverter" />
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <ht:HelixViewport3D x:Name="MainViewPort" ShowCoordinateSystem="True" ShowCameraTarget="True">
+            <ht:HelixViewport3D.DefaultCamera>
+                <PerspectiveCamera Position="-13 -18 8" LookDirection="23 18 -8" UpDirection="0 0 1"/>
+            </ht:HelixViewport3D.DefaultCamera>
+            <ht:SunLight/>
+            
+
+            <local:ItemsVisual3D x:Name="segments" ItemsSource="{Binding ItemsSource, UpdateSourceTrigger=PropertyChanged}"/>
+            <ht:TubeVisual3D x:Name="baseTube" Path="{Binding DefaultLength, Converter={StaticResource TubeLengthConverter}}" Diameter="{Binding DefaultDiameter}" Material="{Binding DefaultTubeBrush, Converter={StaticResource BrushToMaterialConverter}}"/>
+        </ht:HelixViewport3D>
+
+        <StackPanel Orientation="Vertical" Margin="15,25" HorizontalAlignment="Right">
+            <TextBlock Text="* Hold mouse right button for rotate."/>
+            <TextBlock Text="* Use mouse whell for zoom."/>
+        </StackPanel>
+    </Grid>
+</UserControl>

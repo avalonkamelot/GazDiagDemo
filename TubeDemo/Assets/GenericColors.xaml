@@ -1,0 +1,85 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options">
+    <!-- Default EBS Accent colors, brushes, pens -->
+    <Color x:Key="AccentColor">#FF2A579A</Color>
+    <!-- 80% -->
+    <Color x:Key="AccentColor80">#CC2A579A</Color>
+    <!-- 60% -->
+    <Color x:Key="AccentColor60">#992A579A</Color>
+    <!-- 40% -->
+    <Color x:Key="AccentColor40">#662A579A</Color>
+    <!-- 20% -->
+    <Color x:Key="AccentColor20">#332A579A</Color>
+    <!-- 10% -->
+    <Color x:Key="AccentColor10">#222A579A</Color>
+
+    <!-- EBS Brushes -->
+    <SolidColorBrush x:Key="Accent" Color="{DynamicResource AccentColor}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Accent80" Color="{DynamicResource AccentColor80}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Accent60" Color="{DynamicResource AccentColor60}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Accent40" Color="{DynamicResource AccentColor40}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Accent20" Color="{DynamicResource AccentColor20}" options:Freeze="True" />
+    <SolidColorBrush x:Key="Accent10" Color="{DynamicResource AccentColor10}" options:Freeze="True" />
+
+    <!-- EBS Pens -->
+    <Pen x:Key="AccentPen" Brush="{DynamicResource Accent}" options:Freeze="True" />
+    <Pen x:Key="AccentPen80" Brush="{DynamicResource Accent80}" options:Freeze="True" />
+    <Pen x:Key="AccentPen60" Brush="{DynamicResource Accent60}" options:Freeze="True" />
+    <Pen x:Key="AccentPen40" Brush="{DynamicResource Accent40}" options:Freeze="True" />
+    <Pen x:Key="AccentPen20" Brush="{DynamicResource Accent20}" options:Freeze="True" />
+    <Pen x:Key="AccentPen10" Brush="{DynamicResource Accent10}" options:Freeze="True" />
+    <!-- Default EBS Accent colors, brushes, pens -->
+
+
+    <!-- Default EBS Accent colors, brushes, pens (alpha independent) -->
+    <!-- 80% -->
+    <Color x:Key="AccentColorAI80">#FF5579AE</Color>
+    <!-- 60% -->
+    <Color x:Key="AccentColorAI60">#FF7F9AC2</Color>
+    <!-- 40% -->
+    <Color x:Key="AccentColorAI40">#FFAABCD7</Color>
+    <!-- 20% -->
+    <Color x:Key="AccentColorAI20">#FFD4DDEB</Color>
+    <!-- 10% -->
+    <Color x:Key="AccentColorAI10">#FFE3E9F2</Color>
+
+    <!-- EBS Brushes -->
+    <SolidColorBrush x:Key="AccentAI80" Color="{DynamicResource AccentColorAI80}" options:Freeze="True" />
+    <SolidColorBrush x:Key="AccentAI60" Color="{DynamicResource AccentColorAI60}" options:Freeze="True" />
+    <SolidColorBrush x:Key="AccentAI40" Color="{DynamicResource AccentColorAI40}" options:Freeze="True" />
+    <SolidColorBrush x:Key="AccentAI20" Color="{DynamicResource AccentColorAI20}" options:Freeze="True" />
+    <SolidColorBrush x:Key="AccentAI10" Color="{DynamicResource AccentColorAI10}" options:Freeze="True" />
+
+    <!-- EBS Pens -->
+    <Pen x:Key="AccentPenAI80" Brush="{DynamicResource AccentAI80}" options:Freeze="True" />
+    <Pen x:Key="AccentPenAI60" Brush="{DynamicResource AccentAI60}" options:Freeze="True" />
+    <Pen x:Key="AccentPenAI40" Brush="{DynamicResource AccentAI40}" options:Freeze="True" />
+    <Pen x:Key="AccentPenAI20" Brush="{DynamicResource AccentAI20}" options:Freeze="True" />
+    <Pen x:Key="AccentPenAI10" Brush="{DynamicResource AccentAI10}" options:Freeze="True" />
+    <!-- Default EBS Accent colors, brushes, pens (alpha independent) -->
+
+
+    <!-- Default other EBS colors, brushes, pens (alpha independent) -->
+    <Color x:Key="GenericWarningYellowAI">#FFfdfcac</Color>
+    <Color x:Key="GenericErrorRedAI">#FFdd0000</Color>
+    <Color x:Key="GenericErrorPalePinkAI">#FFffe8e8</Color>
+    <Color x:Key="GenericYellowMessageAI">#FF919164</Color>
+    <Color x:Key="GenericBackgroundGray">#FFF1F1F1</Color>
+    <Color x:Key="GenericBackgroundDisabledGray">#FFadadad</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="GenericWarningYellowBrushAI" Color="{DynamicResource GenericWarningYellowAI}" options:Freeze="True" />
+    <SolidColorBrush x:Key="GenericErrorRedBrushAI" Color="{DynamicResource GenericErrorRedAI}" options:Freeze="True" />
+    <SolidColorBrush x:Key="GenericErrorLightPalePinkBrushAI" Color="{DynamicResource GenericErrorPalePinkAI}" options:Freeze="True" />
+    <SolidColorBrush x:Key="GenericYellowMessageBrushAI" Color="{DynamicResource GenericYellowMessageAI}" options:Freeze="True" />
+    <SolidColorBrush x:Key="DefaultPanelBackgroundBrush" Color="{DynamicResource GenericBackgroundGray}" options:Freeze="True"/>
+    <SolidColorBrush x:Key="GenericBackgroundDisabledGrayBrushAI" Color="{DynamicResource GenericBackgroundDisabledGray}" options:Freeze="True"/>
+
+    <!-- Pens -->
+    <Pen x:Key="GenericWarningYellowPenAI" Brush="{DynamicResource GenericWarningYellowBrushAI}" options:Freeze="True" />
+    <Pen x:Key="GenericErrorRedPenAI" Brush="{DynamicResource GenericErrorRedBrushAI}" options:Freeze="True" />
+    <Pen x:Key="GenericErrorLightPalePinkPenAI" Brush="{DynamicResource GenericErrorLightPalePinkBrushAI}" options:Freeze="True" />
+    <Pen x:Key="GenericYellowMessagePenAI" Brush="{DynamicResource GenericYellowMessageBrushAI}" options:Freeze="True" />
+
+</ResourceDictionary>

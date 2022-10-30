@@ -1,0 +1,465 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:options="http://schemas.microsoft.com/winfx/2006/xaml/presentation/options"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/TubeDemo;component/Assets/GenericColors.xaml" />
+        <ResourceDictionary Source="/TubeDemo;component/Assets/CoreIcons.xaml" />
+        <ResourceDictionary Source="/TubeDemo;component/Assets/Button.xaml" />
+        <ResourceDictionary Source="/TubeDemo;component/Assets/TextBox.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
+    
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ModernButton}" />
+    <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBoxBase}}" />
+    <Style TargetType="{x:Type RichTextBox}" BasedOn="{StaticResource {x:Type TextBoxBase}}" />
+
+
+    <!-- COLORS -->
+
+    <!-- Grid Colors -->
+    <SolidColorBrush x:Key="GridHeadingBackground" Color="#FFEBEDEE" options:Freeze="True" />
+    <SolidColorBrush x:Key="GridHeadingBorder" Color="#FF9C9C9C" options:Freeze="True" />
+    <SolidColorBrush x:Key="GridLine" Color="#FF9C9C9C" options:Freeze="True" />
+
+
+    <!-- END COLORS -->
+
+    <!-- BRUSHES -->
+
+    
+
+    <SolidColorBrush x:Key="ForegroundColor">White</SolidColorBrush>
+
+    <!-- font settings -->
+    <FontFamily x:Key="DefaultFontFamily">Segoe UI</FontFamily>
+    <sys:Double x:Key="DefaultFontSize">13</sys:Double>
+
+    <FontFamily x:Key="FixedFontFamily">Consolas</FontFamily>
+    <sys:Double x:Key="FixedFontSize">13.333</sys:Double>
+
+    <sys:Double x:Key="SmallFontSize">11</sys:Double>
+
+    <!-- layout margins -->
+    <Thickness x:Key="RootMargin">-42,-8,-16,-16</Thickness>
+    <Thickness x:Key="ContentMargin">16,28,16,16</Thickness>
+    <Thickness x:Key="StatusMargin">-16,16,0,0</Thickness>
+    <Thickness x:Key="HeaderMargin">0,-28,44,0</Thickness>
+
+    <Thickness x:Key="SplitLeft">0,0,0,0</Thickness>
+    <Thickness x:Key="SplitRight">16,0,0,0</Thickness>
+
+    <!--Title bar-->
+    <Viewbox x:Key="IconView" Width="30" Height="30">
+        <Canvas Width="24" Height="24">
+            <Path Data="M20,19V7H4V19H20M20,3A2,2 0 0,1 22,5V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V5C2,3.89 2.9,3 4,3H20M13,17V15H18V17H13M9.58,13L5.57,9H8.4L11.7,12.3C12.09,12.69 12.09,13.33 11.7,13.72L8.42,17H5.59L9.58,13Z" Fill="Black" />
+        </Canvas>
+    </Viewbox>
+
+    <GeometryDrawing x:Key="WindowIconDrowing" Brush="{StaticResource ForegroundColor}">
+        <GeometryDrawing.Geometry>
+            <PathGeometry FillRule="EvenOdd" Figures="M20,19V7H4V19H20M20,3A2,2 0 0,1 22,5V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V5C2,3.89 2.9,3 4,3H20M13,17V15H18V17H13M9.58,13L5.57,9H8.4L11.7,12.3C12.09,12.69 12.09,13.33 11.7,13.72L8.42,17H5.59L9.58,13Z">
+                <PathGeometry.Transform>
+                    <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                </PathGeometry.Transform>
+            </PathGeometry>
+        </GeometryDrawing.Geometry>
+    </GeometryDrawing>
+
+    <DrawingBrush x:Key="WindowIconBrush" ViewboxUnits="Absolute" Viewbox="3,3,3,3"
+              Drawing="{StaticResource WindowIconDrowing}">
+    </DrawingBrush>
+
+    <!--<DrawingImage x:Key="WindowIcon" Drawing="{StaticResource WindowIconDrowing}"/>-->
+
+
+
+
+    <!--Close system button-->
+    <sys:Double x:Key="CloseButtonWidth">32</sys:Double>
+
+    <!--System Button-->
+    <sys:Double x:Key="SystemButtonHeight">24</sys:Double>
+    <sys:Double x:Key="SystemButtonWidth">32</sys:Double>
+
+    <Style x:Key="ContentRoot" TargetType="FrameworkElement">
+        <Setter Property="Margin" Value="{StaticResource ContentMargin}" />
+    </Style>
+
+
+    <!--Background-->
+    <SolidColorBrush x:Key="Background" Color="#1C1C1C"/>
+    <SolidColorBrush x:Key="LightBackground" Color="#2D2D30"/>
+
+    <!--Foreground-->
+    <SolidColorBrush x:Key="Foreground" Color="#FFFFFF"/>
+
+    <!--General-->
+    <SolidColorBrush x:Key="BackgroundHighlighted" Color="#54545C"/>
+    <SolidColorBrush x:Key="BorderBrushHighlighted" Color="#6A6A75"/>
+    <SolidColorBrush x:Key="BackgroundSelected" Color="#007ACC"/>
+    <SolidColorBrush x:Key="BorderBrushSelected" Color="#3E66A3"/>
+    <SolidColorBrush x:Key="BackgroundNormal" Color="#3F3F46"/>
+    <SolidColorBrush x:Key="BorderBrushNormal" Color="#54545C"/>
+
+    <!--Text Box-->
+    <SolidColorBrush x:Key="TextBoxBackground" Color="#333337"/>
+    <SolidColorBrush x:Key="TextBoxBackgroundSelected" Color="#3F3F46"/>
+
+    <!--Search Text Box-->
+    <SolidColorBrush x:Key="SearchTextForeground" Color="#999999"/>
+
+    <!--Link Button-->
+    <SolidColorBrush x:Key="LinkButtonForeground" Color="#1297FB"/>
+    <SolidColorBrush x:Key="LinkButtonForegroundHighlighted" Color="#55AAFF"/>
+
+    <!--Close Button-->
+    <SolidColorBrush x:Key="CloseButtonBackgroundHighlighted" Color="#39ADFB"/>
+    <SolidColorBrush x:Key="CloseButtonBackgroundPressed" Color="#084E7D"/>
+    <SolidColorBrush x:Key="CloseButtonStroke" Color="#AAFFFFFF"/>
+    <SolidColorBrush x:Key="CloseButtonStrokeHighlighted" Color="#FFFFFF"/>
+
+    <!--Menu-->
+    <SolidColorBrush x:Key="MenuSeparatorBorderBrush" Color="#333337"/>
+    <SolidColorBrush x:Key="MenuItemHighlightedBackground" Color="#3E3E40"/>
+    <SolidColorBrush x:Key="SubmenuItemBackground" Color="#1B1B1C"/>
+    <SolidColorBrush x:Key="SubmenuItemBackgroundHighlighted" Color="#333334"/>
+    <SolidColorBrush x:Key="MenuDisabledForeground" Color="#656565"/>
+
+    <!--Scroll Bar-->
+    <SolidColorBrush x:Key="ScrollBarPageButtonBackgroundHighlighted" Color="#05FFFFFF"/>
+
+
+
+    <!-- Icon buttons styles -->
+    <Style x:Key="RefreshButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Refresh}" Stretch="Uniform"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="PlusButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Plus}" Stretch="UniformToFill" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="SaveButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Save}" Stretch="UniformToFill" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CrossButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Cross}" Stretch="UniformToFill" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="TriangleDownButtonIconStyle" TargetType="ToggleButton">
+        <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid Name="BackForButton" Background="White">
+                        <Image Style="{StaticResource Icon_Triangle_Down}" Stretch="UniformToFill" Width="10" VerticalAlignment="Bottom" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="CollapseAllButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_CollapseAll}" Stretch="UniformToFill" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ShowButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_EyeVisible}" Stretch="UniformToFill" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="HideButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_EyeHidden}" Stretch="UniformToFill" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="MoreButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Three_Dots_Accent}" Stretch="Uniform" VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ShowElementCapacityButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <TextBlock Text="{}{ # }" Foreground="{DynamicResource Accent}" FontFamily="Segoe UI" FontWeight="Bold"
+                                   FontSize="9"
+                                   VerticalAlignment="Center" HorizontalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="HideElementCapacityButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Grid x:Name="HostGrid">
+                            <Line X1="0" Y1="0" X2="{Binding Path=ActualWidth, ElementName=HostGrid}" 
+                                  HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                                  Stroke="{DynamicResource Accent}" StrokeThickness="2" />
+                            <TextBlock Text="{}{ # }" Foreground="{DynamicResource Accent}" FontFamily="Segoe UI" FontWeight="Bold"
+                                       FontSize="9"
+                                       VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Grid>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ChangeWidthIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Change_Width}" Stretch="Uniform" VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="BroomButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Broom}" Stretch="Uniform" VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ImportButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Import}" Stretch="Uniform" VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="ResetButtonIconStyle" TargetType="Button">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Grid Name="BackForButton">
+                        <Image Style="{StaticResource Icon_Undo}" Stretch="Uniform" VerticalAlignment="Center" />
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent40}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="BackForButton" Property="Background"
+                                Value="{DynamicResource Accent60}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- Icon buttons styles -->
+</ResourceDictionary>
